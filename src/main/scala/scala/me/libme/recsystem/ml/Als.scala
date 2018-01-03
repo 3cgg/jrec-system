@@ -29,7 +29,7 @@ object Als{
 
     import spark.implicits._
 
-    val ratings = spark.read.textFile("D:\\java_\\spark\\spark-2.2.1-bin-hadoop2.7\\data\\mllib/als/sample_movielens_ratings.txt")
+    val ratings = spark.read.textFile("/work/spark-2.2.1-bin-hadoop2.7/data/mllib/als/sample_movielens_ratings.txt")
       .map(parseRating)
       .toDF()
     val Array(training, test) = ratings.randomSplit(Array(0.8, 0.2))
