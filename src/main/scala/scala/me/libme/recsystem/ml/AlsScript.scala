@@ -1,15 +1,17 @@
-package scala.me.libme.recsystem.ml
 /**
-  * Created by J on 2018/1/2.
+  * Created by J on 2018/1/8.
   */
+package scala.me.libme.recsystem.ml
+
 import org.apache.spark.ml.evaluation.RegressionEvaluator
 import org.apache.spark.ml.recommendation.ALS
 import org.apache.spark.sql.SparkSession
 
 
-case class Rating(userId: Int, movieId: Int, rating: Float, timestamp: Long)
+case class Rating(userId: Int, itemId: Int, rating: Float, timestamp: Long)
 
-object Als{
+
+object Als {
 
 
   def main(args: Array[String]): Unit = {
@@ -22,14 +24,14 @@ object Als{
 
     val spark = SparkSession
       .builder()
-        .master("local")
+      .master("local")
       .appName("Spark SQL basic example")
       .getOrCreate()
 
 
     import spark.implicits._
 
-    val ratings = spark.read.textFile("/work/spark-2.2.1-bin-hadoop2.7/data/mllib/als/sample_movielens_ratings.txt")
+    val ratings = spark.read.textFile("D:\\java_\\spark-2.2.1-bin-hadoop2.7/data/mllib/als/sample_movielens_ratings.txt")
       .map(parseRating)
       .toDF()
     val Array(training, test) = ratings.randomSplit(Array(0.8, 0.2))
@@ -63,8 +65,4 @@ object Als{
     println("End")
   }
 
-
-
 }
-
-
