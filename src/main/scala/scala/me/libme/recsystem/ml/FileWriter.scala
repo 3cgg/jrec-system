@@ -5,8 +5,6 @@ import java.io.BufferedWriter
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema
 
-import scala.collection.mutable
-
 
 /**
   * Created by J on 2018/1/8.
