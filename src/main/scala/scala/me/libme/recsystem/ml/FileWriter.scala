@@ -11,7 +11,7 @@ import scala.collection.mutable
 /**
   * Created by J on 2018/1/8.
   */
-class FileWriter extends RowOutput{
+class FileWriter extends RowOutput[Unit]{
 
   /**
     * "D:\java_\spark\result_movielens_ratings.txt"

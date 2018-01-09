@@ -90,7 +90,7 @@ object AlsScript {
     import spark.implicits._
 
     val ratings = new FileRatingDataset()
-      .filePath("D:\\java_\\spark\\spark-2.2.1-bin-hadoop2.7/data/mllib/als/sample_movielens_ratings.txt")
+      .filePath("D:\\java_\\spark-2.2.1-bin-hadoop2.7/data/mllib/als/sample_movielens_ratings.txt")
       .ratingDataset()
     val Array(training, test) = ratings.randomSplit(Array(0.8, 0.2))
 
@@ -120,7 +120,8 @@ object AlsScript {
     // Generate top 10 user recommendations for each movie
     val movieRecs = model.recommendForAllItems(10)
 
-    new FileWriter().write(userRecs)
+//    new FileWriter().write(userRecs)
+    CaseClassOutput.write(userRecs)
 //    new FileWriter().write(movieRecs)
 
     println("End")
